@@ -17,11 +17,22 @@ services:
       - totara-data:${REMOTE_DATA}
     working_dir: ${REMOTE_SRC}
 
-  mailcatcher:
+  mailcatcher_old:
     image: tophfr/mailcatcher
-    container_name: totara_mailcatcher
+    container_name: totara_mailcatcher_old
     ports:
       - "8080:80"
+    environment:
+      TZ: ${TIME_ZONE}
+    networks:
+      - totara
+
+  mailcatcher:
+    image: dockage/mailcatcher
+    container_name: totara_mailcatcher
+    ports:
+      - "8080:1080"
+      - "1025:1025"
     environment:
       TZ: ${TIME_ZONE}
     networks:

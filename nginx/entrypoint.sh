@@ -16,7 +16,7 @@ then
 fi
 
 # set dataroot permissions
-chown www-data:www-data $REMOTE_DATA -R
+chown -R www-data:www-data $REMOTE_DATA
 
 # Replace the remote src variable in the nginx configuration with
 # the one defined in the environment variables
